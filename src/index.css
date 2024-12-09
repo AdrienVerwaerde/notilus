@@ -21,6 +21,8 @@
     --color-bg-black: #111111;
     --color-white: #fefefe;
     --color-primary: #4d238d;
+    --color-secondary: #234f8d;
+    --color-tertiary: #238d61;
     --color-danger: rgb(158, 34, 34);
 }
 
