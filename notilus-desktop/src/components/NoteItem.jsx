@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const NoteItem = ({note, index}) => {
-    const colors = ['#4d238d', '#234f8d', '#8d235f'];
+    const colors = ['var(--color-primary)', 'var(--color-secondary)', 'var(--color-tertiary)', 'var(--color-quatro)'];
     const backgroundColor = colors[index % colors.length];
 
     return (
