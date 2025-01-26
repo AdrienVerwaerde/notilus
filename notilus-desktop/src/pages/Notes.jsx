@@ -22,7 +22,6 @@ const Notes = ({ notes }) => {
 
     useEffect(handleSearch, [text]);
 
-
     return (
         <section>
             <header className="notes__header">
