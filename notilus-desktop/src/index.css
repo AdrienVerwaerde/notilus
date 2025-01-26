@@ -25,6 +25,7 @@
     --color-primary: #4d238d;
     --color-secondary: #234f8d;
     --color-tertiary: #8d2368;
+    --color-quatro: #004c3f;
     --color-danger: rgb(158, 34, 34);
 }
 
@@ -96,6 +97,7 @@ h2 {
 
 
 /* NOTES PAGE */
+
 .notes__header {
     display: flex;
     align-items: center;
