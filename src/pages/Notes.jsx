@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { BsPlusLg } from "react-icons/bs";
 import NoteItem from '../components/NoteItem';
 import { MdClose } from "react-icons/md";
+import logo from "../assets/logo.png";
 
 
 const Notes = ({ notes }) => {
@@ -19,21 +20,25 @@ const Notes = ({ notes }) => {
         }))
     }
 
-    const handleSearchClear = () => {
-        setText('');
-        setShowSearch(false);
-        setFilteredNotes(notes);
-    }
-
     useEffect(handleSearch, [text]);
-
 
     return (
         <section>
             <header className="notes__header">
-                {!showSearch && <h2>Notes</h2>}
+                {!showSearch && <img src={logo} className='logo' />}
                 {showSearch && <input type="text" value={text} onChange={(e) => { setText(e.target.value); handleSearch(); }} autoFocus placeholder="Keyword..." />}
-                <button className='btn' onClick={() => setShowSearch(prevState => !prevState)}>{showSearch ? <MdClose onClick={handleSearchClear} /> : <CiSearch />}</button>
+                <button
+                    className="btn"
+                    onClick={() => {
+                        if (showSearch) {
+                            setText('');
+                            setFilteredNotes(notes);
+                        }
+                        setShowSearch(prevState => !prevState);
+                    }}
+                >
+                    {showSearch ? <MdClose /> : <CiSearch />}
+                </button>
             </header>
 
             <div className="notes__container">
