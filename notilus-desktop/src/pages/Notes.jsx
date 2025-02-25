@@ -6,8 +6,8 @@ import NoteItem from '../components/NoteItem';
 import { MdClose } from "react-icons/md";
 import logo from "../assets/logo.png";
 
-import { DndContext, closestCenter } from "@dnd-kit/core";
-import { SortableContext, verticalListSortingStrategy, arrayMove } from "@dnd-kit/sortable";
+import { DndContext, TouchSensor, closestCenter } from "@dnd-kit/core";
+import { SortableContext, verticalListSortingStrategy, arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { useSensor, useSensors, PointerSensor, KeyboardSensor } from "@dnd-kit/core";
 
 
@@ -27,11 +27,11 @@ const Notes = ({ notes, setNotes }) => {
 
     useEffect(handleSearch, [text]);
 
-
     // DRAG N DROP FUNCTIONNALITY //
     const sensors = useSensors(
-        useSensor(PointerSensor, { activationConstraint: { delay: 250, tolerance: 5 } }),
-        useSensor(KeyboardSensor)
+        useSensor(PointerSensor, { activationConstraint: { delay: 300, tolerance: 5 } }),
+        useSensor(TouchSensor, { activationConstraint: { delay: 300, tolerance: 5 } }),
+        useSensor(KeyboardSensor, {coordinateGetter: sortableKeyboardCoordinates})
     );
 
     const handleDragStart = (event) => {
@@ -44,7 +44,7 @@ const Notes = ({ notes, setNotes }) => {
 
         if (!over || active.id === over.id) {
             setActiveNoteId(null);
-            document.body.style.overflow = '';
+            document.body.style.overflow = 'hidden';
             return;
         }
         const oldIndex = notes.findIndex(note => note.id === active.id);
@@ -63,14 +63,14 @@ const Notes = ({ notes, setNotes }) => {
         const scrollSpeed = 10;
 
         if (clientY < scrollThreshold) {
-            window.scrollBy(0, -scrollSpeed);
+            window.scrollBy({ top: -scrollSpeed, behavior: "smooth" });
         } else if (window.innerHeight - clientY < scrollThreshold) {
-            window.scrollBy(0, scrollSpeed);
+            window.scrollBy({ top: scrollSpeed, behavior: "smooth" });
         }
     };
 
     // -------------------- //
-    
+
     return (
         <section>
             <header className="notes__header">
