@@ -89,7 +89,6 @@ const Notes = ({ notes, setNotes }) => {
                     {showSearch ? <MdClose /> : <CiSearch />}
                 </button>
             </header>
-
             {/* Drag and Drop Context */}
             <DndContext
                 sensors={sensors}
@@ -107,7 +106,6 @@ const Notes = ({ notes, setNotes }) => {
                     </div>
                 </SortableContext>
             </DndContext>
-
             <Link to={'/create-note'} className='btn add__btn'><BsPlusLg /></Link>
         </section>
     );
