@@ -36,13 +36,13 @@ const Notes = ({ notes, setNotes}) => {
     const handleDragEnd = (event) => {
         const { active, over } = event;
 
-        if (active.id !== over.id) {
+        if (!over || active.id === over.id) return;
             const oldIndex = notes.findIndex(note => note.id === active.id);
             const newIndex = notes.findIndex(note => note.id === over.id);
             const newNotes = arrayMove(notes, oldIndex, newIndex);
 
             setNotes(newNotes);
-        }
+            setFilteredNotes(newNotes);
     };
 // -------------------- //
     return (
