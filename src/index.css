@@ -142,6 +142,7 @@ h2 {
     cursor: pointer;
     transition: all 300ms ease;
     color: var(--color-white);
+    touch-action: none;
 }
 
 .note__details {
