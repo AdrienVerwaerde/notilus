@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { CSS } from "@dnd-kit/utilities";
 
-const NoteItem = ({note, index}) => {
+const NoteItem = ({note, index, isActive}) => {
     const colors = ['var(--color-primary)', 'var(--color-secondary)', 'var(--color-tertiary)', 'var(--color-quatro)'];
     const backgroundColor = colors[index % colors.length];
 
@@ -12,7 +12,8 @@ const NoteItem = ({note, index}) => {
     const style = {
         backgroundColor,
         transform: CSS.Transform.toString(transform),
-        transition
+        transition,
+        border: isActive ? "2px solid white" : "none",
     };
 
     return (
