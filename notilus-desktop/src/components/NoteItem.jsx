@@ -13,7 +13,7 @@ const NoteItem = ({note, index, isActive}) => {
         backgroundColor,
         transform: CSS.Transform.toString(transform),
         transition,
-        border: isActive ? "2px solid white" : "none",
+        border: isActive ? "2px dotted white" : "none",
     };
 
     return (
